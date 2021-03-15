@@ -5,29 +5,33 @@
 
 class String {
 private:
-    std::size_t length;
     char* str;
 public:
     //default constructor
     String() {
-        length = 0;
         str = nullptr;
     }
 
     // constructor
-    String(const char* _str);
+    String(const char* _str); // this->str = str
+
+    //copy constructor
+    String(const String& other);
 
     //destructor
     ~String();
+
+    String& operator=(const String& other);
 
     const char* c_str() const {
         return str;
     }
 
     int size() const {
-        return length;
-        // return strlen(str);
+        return strlen(str);
     }
 
     void set_str(const char* _str);
 };
+
+void reverse(String original);
