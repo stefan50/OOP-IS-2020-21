@@ -29,7 +29,7 @@ void reverse(String original) {
 // s3 = s1;
 // s3.operator=(s1);
 
-String::String(const String& other) {
+String::String(const String& other) { 
     str = new char[other.size() + 1];
     strcpy(str, other.c_str());
     // strcpy(str, other.str);
@@ -37,10 +37,53 @@ String::String(const String& other) {
 
 // this
 // this != ДИС
-// s3 = s1 // this <-> s3
+// String s3("ala"), s1("ala");
+// s3 = s1 // this <-> &s3 
+// s3 = s3;
 String& String::operator=(const String& other) {
     if(this != &other) {
-        //TODO: delete memory
-        //TODO: assign new vars
+        if(str != nullptr) {
+            delete[] str;
+        }
+        str = new char[strlen(other.str) + 1];
+        strcpy(str, other.str);
     }
+    return *this;
+}
+
+bool String::operator==(const String& other) {
+    return strcmp(str, other.str) == 0 ? true : false;
+}
+
+// "s" > "aa" 
+// "S" > "aa"
+bool String::operator>(const String& other) {
+    for(int i = 0; i < std::min<int>(strlen(str), strlen(other.str)); ++i) {
+        if(str[i] > other.str[i]) {
+            return true;
+        }
+    }  
+    return false;
+}
+
+String String::operator+(const String& other) {
+    char* result = new char[strlen(str) + strlen(other.str) + 1];
+    strcpy(result, str);
+    strcat(result, other.str);
+    String res(result);
+    delete[] result;
+    return res;
+}
+
+String& String::operator+=(const String& other) {
+    *this = *this + other;
+    return *this; 
+}
+
+char& String::operator[](unsigned int index) {
+    if(index < strlen(str)) return str[index];
+}
+
+const char& String::operator[](unsigned int index) const {
+    if(index < strlen(str)) return str[index];
 }

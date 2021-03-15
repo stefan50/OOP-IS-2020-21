@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstring>
+#include <algorithm>
 
 // Doxygen
 
@@ -22,6 +23,16 @@ public:
     ~String();
 
     String& operator=(const String& other);
+
+    bool operator==(const String& other);
+    bool operator>(const String& other); // "aab" > "aaa"
+    // "ss" + "aa" = "ssaa"
+    // String s = s1 + s2;
+    String operator+(const String& other);
+    String& operator+=(const String& other);
+    char& operator[](unsigned int index);
+    const char& operator[](unsigned int index) const;
+    // TODO: Idea - operator <<, operator >> 
 
     const char* c_str() const {
         return str;
