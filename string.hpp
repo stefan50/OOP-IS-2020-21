@@ -33,6 +33,12 @@ public:
     char& operator[](unsigned int index);
     const char& operator[](unsigned int index) const;
     // TODO: Idea - operator <<, operator >> 
+    //print("Hello, world")
+    //printf("Hello, %s", variable); // vararg // write()
+    // stream
+    // cout << "Hello world";
+    // cin >> variable;
+    // cerr << "This is an error"; 
 
     const char* c_str() const {
         return str;
