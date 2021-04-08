@@ -1,2 +1,10 @@
 Test 1 2 3
 Test
+[x1, x2, ..., xn] f -> [f(x1), f(x2), ..., f(xn)]
+
+char toLower(char x) -> 
+map toLower "AljkAs" -> "aljkas"
+
+map :: (a -> b) -> [a] -> [b]
+map f [] = []
+map f (x:xs) = (f x) : (map f xs)

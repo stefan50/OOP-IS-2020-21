@@ -3,7 +3,6 @@
 #include <algorithm>
 
 // Doxygen
-
 class String {
 private:
     char* str;
@@ -39,6 +38,8 @@ public:
     // cout << "Hello world";
     // cin >> variable;
     // cerr << "This is an error"; 
+    // int& a = b;
+    // a++;
 
     const char* c_str() const {
         return str;
